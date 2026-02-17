@@ -412,7 +412,7 @@ proc bindCallback*(w: Webview; name: string;
   
   #      using global seems to work...
   # TODO is there a better solution?
-  let arg {.global.} = CallBackContext(w: w, fn: fn)
+  let arg = CallBackContext(w: w, fn: fn)
 
   result = w.webviewBind(name, closure, cast[pointer](arg))
 
