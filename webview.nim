@@ -409,9 +409,6 @@ proc bindCallback*(w: Webview; name: string;
                  fn: proc (id: string; req: JsonNode): string): WebviewError {.discardable.} =
   ## Essentially a high-level version of
   ## `webviewBind <#webviewBind,Webview,cstring,proc(cstring,cstring,pointer),pointer>`_
-  
-  #      using global seems to work...
-  # TODO is there a better solution?
   let arg = CallBackContext(w: w, fn: fn)
 
   result = w.webviewBind(name, closure, cast[pointer](arg))
